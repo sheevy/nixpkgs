@@ -19,6 +19,7 @@
   libctl,
   libGDSII,
   guile,
+  mpb,
   python,
   numpy,
   scipy,
@@ -72,6 +73,7 @@ buildPythonPackage rec {
     libGDSII
     guile
     gsl
+    mpb
   ];
 
   propagatedBuildInputs =
@@ -123,6 +125,9 @@ buildPythonPackage rec {
   */
   nativeCheckInputs = [
     mpiCheckPhaseHook
+  ];
+  pythonImportCheck = [
+    "meep.mpb"
   ];
   checkPhase = ''
     runHook preCheck
